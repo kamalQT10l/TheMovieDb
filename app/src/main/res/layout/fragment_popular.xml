@@ -8,7 +8,7 @@
     tools:context=".ui.home.fragments.PopularMoviesFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/fragment_upcoming_movies_swipe_refresh"
+        android:id="@+id/fragment_popular_movies_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,7 +18,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:scrollbars="vertical"
-            android:id="@+id/fragment_upcoming_movies_rv"
+            android:id="@+id/fragment_popular_movies_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </androidx.recyclerview.widget.RecyclerView>
