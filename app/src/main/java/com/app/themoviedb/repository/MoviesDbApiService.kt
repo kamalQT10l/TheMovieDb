@@ -2,7 +2,6 @@ package com.app.themoviedb.repository
 
 import com.app.themoviedb.BuildConfig
 import com.app.themoviedb.models.MovieData
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

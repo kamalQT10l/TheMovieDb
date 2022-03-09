@@ -7,6 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.app.themoviedb.R
 import com.app.themoviedb.databinding.FragmentNowPlayingBinding
+import com.app.themoviedb.helpers.OnItemClickListener
+import com.app.themoviedb.models.Movies
 import com.app.themoviedb.ui.home.adapter.MoviesLoadStateAdapter
 import com.app.themoviedb.ui.home.adapter.NowPlayingAdapter
 import com.app.themoviedb.ui.home.viewmodel.NowPlayingViewModel
@@ -15,7 +17,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing){
+class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing), OnItemClickListener {
 
     private lateinit var binding: FragmentNowPlayingBinding
     private val viewModel by viewModels<NowPlayingViewModel>()
@@ -24,7 +26,7 @@ class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNowPlayingBinding.bind(view)
-        nowPlayingAdapter = NowPlayingAdapter()
+        nowPlayingAdapter = NowPlayingAdapter(this)
         binding.apply {
             fragmentNowShowingMoviesRv.setHasFixedSize(true)
             fragmentNowShowingMoviesRv.itemAnimator = null
@@ -40,6 +42,9 @@ class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing){
                 nowPlayingAdapter.submitData(it)
             }
         }
+    }
+
+    override fun onItemClick(photo: Movies) {
     }
 
 
