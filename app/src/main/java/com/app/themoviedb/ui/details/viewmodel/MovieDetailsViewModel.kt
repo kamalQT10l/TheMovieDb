@@ -1,8 +1,5 @@
 package com.app.themoviedb.ui.details.viewmodel
 
-import android.graphics.Movie
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
