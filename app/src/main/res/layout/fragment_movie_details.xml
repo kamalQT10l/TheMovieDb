@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    android:descendantFocusability="blocksDescendants"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.details.fragment.MovieDetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/activity_detail_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/activity_detail_collapsing_layout"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlwaysCollapsed|snap"
+            app:title=" ">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity2">
+
+                <androidx.cardview.widget.CardView
+                    app:cardCornerRadius="5dp"
+                    android:id="@+id/bottomCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:cardElevation="9dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias=".7">
+                    <ImageView
+                        android:id="@+id/activity_detail_backdrop_image"
+                        android:fitsSystemWindows="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </ImageView>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+<!--                <ImageView-->
+<!--                    app:layout_constraintHorizontal_bias="0.850"-->
+<!--                    app:layout_constraintVertical_bias="0.700"-->
+<!--                    android:id="@+id/imageView"-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/bottomCard"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/cardView2"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/cardView2"-->
+<!--                    app:srcCompat="@drawable/like_icon" />-->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/bottomCard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.102"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomCard"
+                    app:layout_constraintVertical_bias="0.48">
+
+                    <ImageView
+                        android:id="@+id/activity_detail_poster_image"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:visibility="visible" />
+                </androidx.cardview.widget.CardView>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:src="@color/dark_gray_night"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/bottomCard"
+                    app:layout_constraintStart_toStartOf="@+id/bottomCard"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomCard">
+
+
+                    <CheckBox
+                        android:id="@+id/activity_detail_add_to_favourite"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.850"
+                        app:layout_constraintVertical_bias="0.700"
+                        app:srcCompat="@drawable/like_icon"
+                        android:layout_margin="16dp"
+                        android:button="@null"
+                        android:checked="false"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@drawable/like_icon"
+                        android:stateListAnimator="@animator/scale"/>
+
+
+
+                    <TextView
+                        android:layout_marginStart="200dp"
+                        android:layout_marginEnd="60dp"
+                        android:id="@+id/activity_detail_movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+
+                        android:fontFamily="@font/opensans_semibold"
+                        android:maxLength="400"
+                        android:maxLines="2"
+                        android:text="Maze Runner"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_movie_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/activity_detail_movie_title"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="60dp"
+                        android:maxLength="400"
+                        android:maxLines="2"
+                        android:text="12 July, 2018"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+
+                        app:layout_constraintTop_toBottomOf="@+id/activity_detail_movie_title" />
+
+                        <TextView
+                            android:id="@+id/tv_tag_line"
+                            android:layout_below="@+id/activity_detail_movie_date"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="200dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="60dp"
+                            android:maxLines="1"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content">
+
+                        </TextView>
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/activity_detail_backdrop_image"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:alpha="0.6"-->
+<!--                    android:contentDescription="@string/detail_backdrop_image"-->
+<!--                    android:fitsSystemWindows="true"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:src="@color/gray"-->
+<!--                    app:layout_collapseMode="parallax"-->
+<!--                    app:layout_collapseParallaxMultiplier="0.7"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="1.0"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/activity_detail_toolbar_card"-->
+<!--                    android:layout_width="80dp"-->
+<!--                    android:layout_height="120dp"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:theme="@style/CardView.Light"-->
+<!--                    app:cardCornerRadius="6dp"-->
+<!--                    app:cardUseCompatPadding="true">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/activity_detail_poster_image"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:scaleType="fitXY" />-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                            <TextView-->
+<!--                                android:id="@+id/activity_detail_movie_title"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_alignTop="@+id/activity_detail_toolbar_card"-->
+<!--                                android:layout_marginTop="34dp"-->
+<!--                                android:layout_marginEnd="8dp"-->
+<!--                                android:layout_toEndOf="@+id/activity_detail_toolbar_card"-->
+<!--                                android:fontFamily="@font/opensans_semibold"-->
+<!--                                android:maxLength="400"-->
+<!--                                android:maxLines="2"-->
+<!--                                android:text="Maze Runner"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:textSize="16sp" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_movie_date"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignStart="@+id/activity_detail_movie_title"-->
+<!--                    android:layout_below="@+id/activity_detail_movie_title"-->
+<!--                    android:maxLength="400"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="12 July, 2018"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="12sp" />-->
+
+
+<!--                <CheckBox-->
+<!--                    android:id="@+id/activity_detail_add_to_favourite"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_alignParentBottom="true"-->
+<!--                    android:layout_margin="16dp"-->
+<!--                    android:button="@null"-->
+<!--                    android:checked="false"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:background="@drawable/like_icon"-->
+<!--                    android:stateListAnimator="@animator/scale"-->
+<!--                    app:layout_constraintLeft_toLeftOf="parent" />-->
+
+<!--            </RelativeLayout>-->
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/activity_detail_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:backgroundTint="@color/colorPrimary"
+                android:contentInsetLeft="0dp"
+                android:contentInsetStart="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:title=" ">
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                app:layout_constraintBottom_toTopOf="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="?attr/dividerColor" />
+
+            <LinearLayout
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:gravity="center"
+                android:id="@+id/genreLayout"
+                android:background="?attr/bgColor"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="50dp">
+<!--                <TextView-->
+<!--                    android:id="@+id/genre1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/genre2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+<!--                <TextView-->
+<!--                    android:id="@+id/genre3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+            </LinearLayout>
+            <View
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="?attr/dividerColor" />
+            <LinearLayout
+                android:id="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="?attr/bgColor"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/activity_detail_adult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_rounded"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="?attr/primaryTextColor" />
+
+                <TextView
+                    android:id="@+id/activity_detail_vote_average"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/bg_rounded"
+                    android:gravity="center"
+                    android:text="rating: 8.6/10"
+                    android:textColor="?attr/primaryTextColor" />
+
+                <TextView
+                    android:id="@+id/activity_detail_vote_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_rounded"
+                    android:gravity="center"
+                    android:text="votes: 8.09k"
+                    android:textColor="?attr/primaryTextColor" />
+
+            </LinearLayout>
+            <View
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="?attr/dividerColor" />
+            <TextView
+                android:id="@+id/activity_detail_overview_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:gravity="bottom"
+                android:text="@string/overview"
+                android:textColor="?attr/secondaryTextColor"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"
+                tools:layout_editor_absoluteY="50dp" />
+
+
+            <LinearLayout
+                android:id="@+id/activity_detail_overview_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="?attr/bgColor"
+                android:orientation="vertical"
+                android:showDividers="end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_detail_overview_text">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/dividerColor" />
+
+                <LinearLayout
+                    android:id="@+id/activity_detail_movie_time_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_detail_movie_run_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="@string/runtime_mins"
+                        android:textColor="?attr/secondaryTextColor" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="22sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:background="?attr/dividerColor"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/activity_detail_movie_budget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingStart="10dp"
+                        android:fontFamily="@font/open_sans_regular"
+                        android:text="@string/budget_k"
+                        android:textColor="?attr/secondaryTextColor" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/dividerColor" />
+
+                <TextView
+                    android:id="@+id/activity_detail_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="10dp"
+                    android:paddingBottom="8dp"
+                    android:scrollbars="vertical"
+                    android:textAlignment="textStart"
+                    android:textColor="?attr/primaryTextColor" />
+
+                <TextView
+                    android:id="@+id/activity_detail_genre"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/open_sans_regular"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/gray" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/dividerColor" />
+
+                <RatingBar
+                    android:id="@+id/activity_detail_rating_bar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="4dp"
+                    android:rating="4" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="?attr/dividerColor" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <View-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/activity_detail_ratings_linear_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor" />-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/activity_detail_ratings_linear_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                android:gravity="center"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingBottom="4dp"-->
+<!--                android:paddingTop="4dp"-->
+<!--                android:weightSum="3"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_adult"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="adult: false"-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_vote_average"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="rating: 8.6/10"-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_vote_count"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="28dp"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:background="@drawable/bg_rounded"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="votes: 8.09k"-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+
+<!--            </LinearLayout>-->
+<!--            <View-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_overview_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/overview"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_ratings_linear_layout"-->
+<!--                tools:layout_editor_absoluteY="50dp" />-->
+
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/activity_detail_overview_linear_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:layout_marginBottom="4dp"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                android:orientation="vertical"-->
+<!--                android:showDividers="end"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_overview_text">-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/activity_detail_movie_time_linear_layout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/activity_detail_movie_run_time"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:fontFamily="@font/open_sans_regular"-->
+<!--                        android:text="@string/runtime_mins"-->
+<!--                        android:textColor="?attr/secondaryTextColor" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="1dp"-->
+<!--                        android:layout_height="22sp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:background="?attr/dividerColor" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/activity_detail_movie_budget"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_marginStart="8dp"-->
+<!--                        android:fontFamily="@font/open_sans_regular"-->
+<!--                        android:text="@string/budget_k"-->
+<!--                        android:textColor="?attr/secondaryTextColor" />-->
+
+<!--                </LinearLayout>-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_overview"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:fontFamily="@font/open_sans_regular"-->
+<!--                    android:paddingEnd="8dp"-->
+<!--                    android:paddingStart="8dp"-->
+<!--                    android:scrollbars="vertical"-->
+<!--                    android:textAlignment="textStart"-->
+<!--                    android:textColor="?attr/primaryTextColor" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/activity_detail_genre"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:fontFamily="@font/open_sans_regular"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:textAlignment="textEnd"-->
+<!--                    android:textColor="@color/gray" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--                <RatingBar-->
+<!--                    android:id="@+id/activity_detail_rating_bar"-->
+<!--                    style="?android:attr/ratingBarStyleIndicator"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:rating="4" />-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+<!--            </LinearLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_review_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/reviews"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_overview_linear_layout" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                android:id="@+id/activity_detail_review_relative_layout"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_review_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <View-->
+<!--                    android:layout_above="@+id/activity_detail_review_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_toStartOf="@+id/activity_detail_review_progress_bar"-->
+<!--                    android:id="@+id/activity_detail_review_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+<!--                <ProgressBar-->
+<!--                    android:indeterminate="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:id="@+id/activity_detail_review_progress_bar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--                <View-->
+<!--                    android:layout_below="@+id/activity_detail_review_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+<!--            </RelativeLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_cast_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/cast"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_review_relative_layout" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                android:id="@+id/activity_detail_cast_relative_layout"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--                <View-->
+<!--                    android:layout_above="@+id/activity_detail_cast_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_toStartOf="@+id/activity_detail_cast_progress_bar"-->
+<!--                    android:id="@+id/activity_detail_cast_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+<!--                <ProgressBar-->
+<!--                    android:indeterminate="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:id="@+id/activity_detail_cast_progress_bar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+<!--                <View-->
+<!--                    android:layout_below="@+id/activity_detail_cast_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_crew_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/crew"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_cast_relative_layout" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                android:id="@+id/activity_detail_crew_relative_layout"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_crew_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <View-->
+<!--                    android:layout_above="@+id/activity_detail_crew_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_toStartOf="@+id/activity_detail_crew_progress_bar"-->
+<!--                    android:id="@+id/activity_detail_crew_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+<!--                <ProgressBar-->
+<!--                    android:indeterminate="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:id="@+id/activity_detail_crew_progress_bar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+
+<!--                <View-->
+<!--                    android:layout_below="@+id/activity_detail_crew_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_trailer_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="12dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/trailers"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_crew_relative_layout" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:id="@+id/activity_detail_trailer_relative_layout"-->
+<!--                android:background="?attr/bgColor"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_trailer_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <View-->
+<!--                    android:layout_above="@+id/activity_detail_trailer_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:layout_toStartOf="@+id/activity_detail_trailer_progress_bar"-->
+<!--                    android:id="@+id/activity_detail_trailer_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+<!--                <ProgressBar-->
+<!--                    android:indeterminate="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:id="@+id/activity_detail_trailer_progress_bar"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content" />-->
+
+<!--                <View-->
+<!--                    android:layout_above="@+id/activity_detail_trailer_recycler_view"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0.5dp"-->
+<!--                    android:background="?attr/dividerColor" />-->
+<!--            </RelativeLayout>-->
+
+
+<!--            <View-->
+<!--                android:id="@+id/activity_similar_movie_view"-->
+<!--                android:layout_marginTop="12dp"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_trailer_relative_layout"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/activity_similar_movie_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor"/>-->
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_ripple"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:drawableEnd="@drawable/right_arrow"-->
+<!--                android:id="@+id/activity_similar_movie_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:paddingEnd="8dp"-->
+<!--                android:paddingTop="8dp"-->
+<!--                android:paddingBottom="8dp"-->
+<!--                android:fontFamily="@font/open_sans_regular"-->
+<!--                android:gravity="center|start"-->
+<!--                android:text="@string/see_similar_movies"-->
+<!--                android:textColor="?attr/primaryTextColor"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_similar_movie_view" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/activity_similar_movie_text_bottom_view"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_similar_movie_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/activity_detail_find_out_more_text"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:fontFamily="@font/opensans_semibold"-->
+<!--                android:gravity="bottom"-->
+<!--                android:text="@string/find_out_more"-->
+<!--                android:textColor="?attr/secondaryTextColor"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_similar_movie_text_bottom_view" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/activity_detail_find_out_more_text_top_view"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_find_out_more_text"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/activity_detail_wikipedia_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor"/>-->
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_ripple"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:drawableEnd="@drawable/right_arrow"-->
+<!--                android:id="@+id/activity_detail_wikipedia_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:paddingEnd="8dp"-->
+<!--                android:paddingTop="8dp"-->
+<!--                android:paddingBottom="8dp"-->
+<!--                android:fontFamily="@font/open_sans_regular"-->
+<!--                android:gravity="center|start"-->
+<!--                android:text="@string/wikipedia"-->
+<!--                android:textColor="?attr/primaryTextColor"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_find_out_more_text_top_view" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/activity_detail_find_out_more_middle_view"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_wikipedia_btn"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor"/>-->
+
+<!--            <TextView-->
+<!--                android:background="@drawable/bg_ripple"-->
+<!--                android:drawablePadding="4dp"-->
+<!--                android:drawableEnd="@drawable/right_arrow"-->
+<!--                android:id="@+id/activity_detail_imdb_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:paddingStart="8dp"-->
+<!--                android:paddingEnd="8dp"-->
+<!--                android:paddingTop="8dp"-->
+<!--                android:paddingBottom="8dp"-->
+<!--                android:fontFamily="@font/open_sans_regular"-->
+<!--                android:gravity="center|start"-->
+<!--                android:text="@string/imdb"-->
+<!--                android:textColor="?attr/primaryTextColor"-->
+<!--                android:textSize="16sp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_find_out_more_middle_view" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/activity_detail_find_out_more_bottom_view"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_imdb_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="0.5dp"-->
+<!--                android:background="?attr/dividerColor"/>-->
+
+<!--            <View-->
+<!--                android:id="@+id/activity_detail_final_view"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/activity_detail_find_out_more_bottom_view"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="16dp"/>-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.app.themoviedb.R
 import com.app.themoviedb.databinding.FragmentNowPlayingBinding
 import com.app.themoviedb.helpers.OnItemClickListener
@@ -45,6 +46,8 @@ class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing), OnItemC
     }
 
     override fun onItemClick(photo: Movies) {
+       val action = HomeFragmentDirections.actionNowPlayingMovieToDetailsFragment(photo.id)
+        findNavController().navigate(action)
     }
 
 

@@ -2,7 +2,10 @@ package com.app.themoviedb.repository
 
 import com.app.themoviedb.BuildConfig
 import com.app.themoviedb.models.MovieData
+import com.app.themoviedb.models.MovieDetailResponse
+import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesDbApiService {
@@ -29,4 +32,9 @@ interface MoviesDbApiService {
     suspend fun getUpcomingMovies(@Query("api_key") apiKey: String,
                           @Query("page") pageNumber: Int
                          ): MovieData
+
+
+
+    @GET("movie/{movieId}")
+    fun getDetailsOfTheMovie(@Path("movieId") movieId: Int, @Query("api_key") apiKey: String): Call<MovieDetailResponse>
 }
