@@ -1,22 +1,3 @@
-//// Top-level build file where you can add configuration options common to all sub-projects/modules.
-//plugins {
-//    id 'com.android.application' version '7.1.2' apply false
-//    id 'com.android.library' version '7.1.2' apply false
-//    id 'org.jetbrains.kotlin.android' version '1.6.10' apply false
-//}
-//
-//ext {
-//    navigationVersion = '2.4.1'
-//    hiltVersion = '2.38.1'
-//    hiltXVersion = '1.0.0-alpha03'
-//    retrofitVersion = '2.9.0'
-//    pagingVersion = "3.1.0"
-//    glideVersion = '4.11.0'
-//}
-//
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -57,6 +38,8 @@ ext {
     retrofitVersion = '2.9.0'
     pagingVersion = "3.1.0"
     glideVersion = '4.11.0'
+    roomVersion = "2.2.5"
+
 }
 
 

@@ -50,6 +50,4 @@ class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing), OnItemC
         val action = HomeFragmentDirections.actionNowPlayingMovieToDetailsFragment(movie.id)
         findNavController().navigate(action)
     }
-
-
 }

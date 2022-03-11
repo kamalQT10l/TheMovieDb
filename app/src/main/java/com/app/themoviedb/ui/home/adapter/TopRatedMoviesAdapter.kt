@@ -4,16 +4,18 @@ package com.app.themoviedb.ui.home.adapter
  import android.view.LayoutInflater
  import android.view.ViewGroup
  import androidx.paging.PagingDataAdapter
+ import androidx.recyclerview.widget.RecyclerView
  import com.app.themoviedb.base.BaseViewHolder
  import com.app.themoviedb.base.MoviesDiffUtil
  import com.app.themoviedb.databinding.MovieItemLayoutBinding
+ import com.app.themoviedb.helpers.OnItemClickListener
  import com.app.themoviedb.models.Movies
  import com.app.themoviedb.repository.api.MoviesDbApiService
  import com.app.themoviedb.utils.DateUtils
  import com.bumptech.glide.Glide
  import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class TopRatedMoviesAdapter :
+class TopRatedMoviesAdapter(private val onItemClickListener: OnItemClickListener) :
     PagingDataAdapter<Movies, TopRatedMoviesAdapter.ViewHolder>(
         MoviesDiffUtil
     ) {
@@ -34,8 +36,22 @@ class TopRatedMoviesAdapter :
         return ViewHolder(binding)
     }
 
-    class ViewHolder(val binding: MovieItemLayoutBinding) :
+    inner class ViewHolder(val binding: MovieItemLayoutBinding) :
         BaseViewHolder<Movies>(binding.root) {
+
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    if (item != null) {
+                        onItemClickListener.onItemClick(item)
+                    }
+                }
+            }
+        }
+
+
         override fun bindItem(item: Movies) {
             if(item == null){
                 return

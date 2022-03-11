@@ -63,7 +63,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun redirectFavouriteFragment() {
-
+        val action = HomeFragmentDirections.actionHomeToFavFragment()
+        findNavController().navigate(action)
     }
 
     private fun redirectSearchFragment() {

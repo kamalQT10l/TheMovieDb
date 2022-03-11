@@ -2,9 +2,9 @@ package com.app.themoviedb.ui.details.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.app.themoviedb.R
 import com.app.themoviedb.databinding.FragmentMovieDetailsBinding
 import com.app.themoviedb.models.MovieDetailResponse
+import com.app.themoviedb.repository.data.local.entity.FavouriteMovies
 import com.app.themoviedb.ui.details.viewmodel.MovieDetailsViewModel
 import com.app.themoviedb.utils.DateUtils
 import com.bumptech.glide.Glide
@@ -33,6 +34,8 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
 
     private lateinit var title:String
 
+    private lateinit var favouriteMovies : FavouriteMovies
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding  = FragmentMovieDetailsBinding.bind(view)
@@ -43,7 +46,16 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
         })
         val id  = args.movieId
         viewModel.getMovieDetail(id)
-        (requireActivity() as AppCompatActivity)
+
+        binding?.activityDetailAddToFavourite?.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { _, b ->
+            if(b){
+                //add movie
+                viewModel.addMovieToFavourite(favouriteMovies)
+            }else{
+                //delete movie
+                viewModel.removeMovieFromFavourites(favouriteMovies)
+            }
+        })
     }
 
 
@@ -66,9 +78,7 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
             else activityDetailMovieBudget.text = "budget: $"+(it.budget.div(1000))+"k"
 
 
-            Log.d("TAG", "backdropUrl: ---"+it.backdropUrl)
 
-            Log.d("TAG", "posterImageUrl: ---"+it.posterImageUrl)
             Glide.with(this@MovieDetailsFragment)
                 .load(it.backdropUrl)
                 .centerCrop()
@@ -121,6 +131,11 @@ class MovieDetailsFragment : Fragment(R.layout.fragment_movie_details) {
                 genreLayout.addView(myView)
             }
         }
+
+        favouriteMovies = FavouriteMovies(
+            title = title, tagLine = it.tagline, movieId = it.id, releaseDate = it.releaseDate,
+            voteAvg =it.voteAverage, genre = it.genres[0].name, overView =it.overview, posterPath =it.posterPath
+        )
 
     }
 

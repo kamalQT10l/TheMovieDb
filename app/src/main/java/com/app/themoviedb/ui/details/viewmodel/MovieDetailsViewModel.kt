@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.themoviedb.models.MovieDetailResponse
 import com.app.themoviedb.repository.MovieDbRepository
+import com.app.themoviedb.repository.data.local.dao.FavouriteDao
+import com.app.themoviedb.repository.data.local.entity.FavouriteMovies
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -13,7 +15,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailsViewModel @Inject constructor(private val repository: MovieDbRepository): ViewModel(){
+class MovieDetailsViewModel @Inject constructor(private val repository: MovieDbRepository,
+private val favouriteDao: FavouriteDao): ViewModel(){
 
 
 
@@ -29,6 +32,18 @@ class MovieDetailsViewModel @Inject constructor(private val repository: MovieDbR
                     movieDetailLiveData.value = response?.body()
                 }
             })
+        }
+    }
+
+    fun addMovieToFavourite(favouriteMovies: FavouriteMovies) {
+        viewModelScope.launch {
+            favouriteDao.insertFavMovie(favouriteMovies)
+        }
+    }
+
+    fun removeMovieFromFavourites(favouriteMovies: FavouriteMovies) {
+        viewModelScope.launch {
+            favouriteDao.deleteFavMovie(favouriteMovies)
         }
     }
 }

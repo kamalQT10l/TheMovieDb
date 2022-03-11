@@ -4,16 +4,18 @@ package com.app.themoviedb.ui.home.adapter
  import android.view.LayoutInflater
  import android.view.ViewGroup
  import androidx.paging.PagingDataAdapter
+ import androidx.recyclerview.widget.RecyclerView
  import com.app.themoviedb.base.BaseViewHolder
  import com.app.themoviedb.base.MoviesDiffUtil
  import com.app.themoviedb.databinding.MovieItemLayoutBinding
+ import com.app.themoviedb.helpers.OnItemClickListener
  import com.app.themoviedb.models.Movies
  import com.app.themoviedb.repository.api.MoviesDbApiService
  import com.app.themoviedb.utils.DateUtils
  import com.bumptech.glide.Glide
  import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class PopularMoviesAdapter :
+class PopularMoviesAdapter(private val onItemClickListener: OnItemClickListener) :
     PagingDataAdapter<Movies, PopularMoviesAdapter.ViewHolder>(
         MoviesDiffUtil
     ) {
@@ -34,8 +36,21 @@ class PopularMoviesAdapter :
         return ViewHolder(binding)
     }
 
-    class ViewHolder(val binding: MovieItemLayoutBinding) :
+    inner class ViewHolder(val binding: MovieItemLayoutBinding) :
         BaseViewHolder<Movies>(binding.root) {
+        init {
+            binding.root.setOnClickListener {
+                val position = bindingAdapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val item = getItem(position)
+                    if (item != null) {
+                        onItemClickListener.onItemClick(item)
+                    }
+                }
+            }
+        }
+
+
         override fun bindItem(item: Movies) {
             if(item == null){
                 return
@@ -46,7 +61,6 @@ class PopularMoviesAdapter :
                     singleItemMovieReleaseDate.text = "Release date: ".plus(DateUtils.getStringDate(item.releaseDate))
                     singleItemMovieType.text = "Genre: "+item.genreIds
                     singleItemMovieOverview.text = item.overview
-                    Log.e("TAG","Image url****"+ MoviesDbApiService.IMAGE_BASE_URL+item.posterPath)
                     Glide.with(itemView)
                         .load(MoviesDbApiService.IMAGE_BASE_URL+item.posterPath)
                         .centerCrop()
