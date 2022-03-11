@@ -1,15 +1,16 @@
-package com.app.themoviedb.repository.data
+package com.app.themoviedb.repository.data.remote
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.app.themoviedb.models.Movies
-import com.app.themoviedb.repository.MoviesDbApiService
+import com.app.themoviedb.repository.api.MoviesDbApiService
 import retrofit2.HttpException
 import java.io.IOException
 
 
 private const val UNSPLASH_STARTING_PAGE_INDEX = 1
-class TopRatedMoviesPagingSource(private val moviesDbApiService: MoviesDbApiService)
+
+class MoviePagingSource(private val moviesDbApiService: MoviesDbApiService)
     : PagingSource<Int, Movies>() {
     override fun getRefreshKey(state: PagingState<Int, Movies>): Int? {
         return state.anchorPosition?.let {
@@ -21,7 +22,7 @@ class TopRatedMoviesPagingSource(private val moviesDbApiService: MoviesDbApiServ
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Movies> {
         val position = params.key ?: UNSPLASH_STARTING_PAGE_INDEX
         return try {
-            val response = moviesDbApiService.getTopRatedMovies(MoviesDbApiService.CLIENT_ID, position)
+            val response = moviesDbApiService.getNowShowingMovies(MoviesDbApiService.CLIENT_ID, position)
             val movies = response.results
             LoadResult.Page(
                 data = movies,

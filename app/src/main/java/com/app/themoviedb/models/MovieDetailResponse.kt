@@ -1,8 +1,7 @@
 package com.app.themoviedb.models
 
 
-import com.app.themoviedb.repository.MoviesDbApiService
-import com.google.gson.annotations.Expose
+import com.app.themoviedb.repository.api.MoviesDbApiService
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetailResponse(

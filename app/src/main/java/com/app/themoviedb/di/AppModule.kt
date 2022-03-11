@@ -1,6 +1,6 @@
 package com.app.themoviedb.di
 
-import com.app.themoviedb.repository.MoviesDbApiService
+import com.app.themoviedb.repository.api.MoviesDbApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

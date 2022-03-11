@@ -8,7 +8,7 @@ package com.app.themoviedb.ui.home.adapter
  import com.app.themoviedb.base.MoviesDiffUtil
  import com.app.themoviedb.databinding.MovieItemLayoutBinding
  import com.app.themoviedb.models.Movies
- import com.app.themoviedb.repository.MoviesDbApiService
+ import com.app.themoviedb.repository.api.MoviesDbApiService
  import com.app.themoviedb.utils.DateUtils
  import com.bumptech.glide.Glide
  import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -46,7 +46,7 @@ class UpcomingMoviesAdapter :
                     singleItemMovieReleaseDate.text = "Release date: ".plus(DateUtils.getStringDate(item.releaseDate))
                     singleItemMovieType.text = "Genre: "+item.genreIds
                     singleItemMovieOverview.text = item.overview
-                    Log.e("TAG","Image url****"+MoviesDbApiService.IMAGE_BASE_URL+item.posterPath)
+                    Log.e("TAG","Image url****"+ MoviesDbApiService.IMAGE_BASE_URL+item.posterPath)
                     Glide.with(itemView)
                         .load(MoviesDbApiService.IMAGE_BASE_URL+item.posterPath)
                         .centerCrop()

@@ -1,33 +1,34 @@
 package com.app.themoviedb.ui.home.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.app.themoviedb.R
 import com.app.themoviedb.databinding.FragmentHomeBinding
 import com.app.themoviedb.ui.home.adapter.MovieViewPagerAdapter
 import com.app.themoviedb.utils.Constants
 import com.google.android.material.tabs.TabLayoutMediator
 
+
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding: FragmentHomeBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentHomeBinding.bind(view)
         binding.pager.adapter = MovieViewPagerAdapter(this)
 
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
 
-        return binding.root
+        setHasOptionsMenu(true)
     }
 
 
@@ -40,5 +41,35 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             else -> null
         }
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_home, menu)
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_search -> {
+                redirectSearchFragment()
+                true
+            }
+            R.id.action_favourites -> {
+                redirectFavouriteFragment()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun redirectFavouriteFragment() {
+
+    }
+
+    private fun redirectSearchFragment() {
+        val action = HomeFragmentDirections.actionHomeToSearchFragment()
+        findNavController().navigate(action)
+    }
+
 
 }

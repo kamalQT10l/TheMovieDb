@@ -45,8 +45,9 @@ class NowPlayingMoviesFragment: Fragment(R.layout.fragment_now_playing), OnItemC
         }
     }
 
-    override fun onItemClick(photo: Movies) {
-       val action = HomeFragmentDirections.actionNowPlayingMovieToDetailsFragment(photo.id)
+    override fun onItemClick(mov: Any) {
+        val movie = mov as Movies
+        val action = HomeFragmentDirections.actionNowPlayingMovieToDetailsFragment(movie.id)
         findNavController().navigate(action)
     }
 
